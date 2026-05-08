@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #ffffff;
+}
+
+/* MAIN CONTAINER */
+
+.admin-container {
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 50px 7%;
+
+    background: #ffffff;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* BLOBS */
+
+.blob {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: 0.22;
+
+    z-index: 1;
+}
+
+.blue {
+
+    width: 350px;
+    height: 350px;
+
+    background: #4285F4;
+
+    top: -120px;
+    left: -120px;
+}
+
+.red {
+
+    width: 280px;
+    height: 280px;
+
+    background: #EA4335;
+
+    bottom: -120px;
+    left: 15%;
+}
+
+.yellow {
+
+    width: 280px;
+    height: 280px;
+
+    background: #FBBC05;
+
+    top: 15%;
+    right: -100px;
+}
+
+.green {
+
+    width: 260px;
+    height: 260px;
+
+    background: #34A853;
+
+    bottom: 10%;
+    right: 15%;
+}
+
+/* HEADER */
+
+.admin-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 50px;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+.admin-title {
+
+    font-size: 46px;
+
+    font-weight: 800;
+
+    background: linear-gradient(
+        90deg,
+        #4285F4,
+        #EA4335,
+        #FBBC05,
+        #34A853
+    );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+/* LOGOUT BUTTON */
+
+.logout-btn {
+
+    padding: 14px 26px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #EA4335;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 8px 20px rgba(234, 67, 53, 0.25);
+}
+
+.logout-btn:hover {
+
+    background: #d93025;
+
+    transform: translateY(-2px);
+}
+
+/* GRID */
+
+.admin-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 35px;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+/* CARD */
+
+.admin-card {
+
+    background: rgba(255, 255, 255, 0.82);
+
+    backdrop-filter: blur(14px);
+
+    border-radius: 28px;
+
+    padding: 35px;
+
+    border: 1px solid #f1f5f9;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s ease;
+}
+
+.admin-card:hover {
+
+    transform: translateY(-5px);
+}
+
+/* TITLE */
+
+.card-title {
+
+    font-size: 30px;
+
+    margin-bottom: 25px;
+
+    color: #111827;
+
+    font-weight: 700;
+}
+
+/* FORM */
+
+.admin-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+/* INPUT */
+
+.admin-input {
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    border: 2px solid #e5e7eb;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: 0.3s ease;
+
+    background: white;
+}
+
+.admin-input:focus {
+
+    border-color: #4285F4;
+
+    box-shadow:
+        0 0 0 4px rgba(66, 133, 244, 0.12);
+}
+
+.admin-input::placeholder {
+
+    color: #9ca3af;
+}
+
+/* BUTTON */
+
+.admin-btn {
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #4285F4;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 10px 25px rgba(66, 133, 244, 0.25);
+}
+
+.admin-btn:hover {
+
+    background: #3367d6;
+
+    transform: translateY(-2px);
+}
+
+/* FILE INPUT */
+
+.file-input {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    border: 2px dashed #d1d5db;
+
+    background: #f9fafb;
+
+    margin-bottom: 25px;
+
+    cursor: pointer;
+
+    color: #374151;
+
+    transition: 0.3s ease;
+}
+
+.file-input:hover {
+
+    border-color: #4285F4;
+
+    background: #f3f8ff;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 992px) {
+
+    .admin-grid {
+
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .admin-container {
+
+        padding: 40px 5%;
+    }
+
+    .admin-header {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        text-align: center;
+    }
+
+    .admin-title {
+
+        font-size: 36px;
+    }
+
+    .admin-card {
+
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .admin-title {
+
+        font-size: 28px;
+    }
+
+    .card-title {
+
+        font-size: 24px;
+    }
+
+    .admin-card {
+
+        padding: 24px;
+
+        border-radius: 22px;
+    }
+
+    .admin-input,
+    .admin-btn,
+    .file-input {
+
+        padding: 14px;
+
+        font-size: 14px;
+    }
+
+    .blob {
+
+        filter: blur(70px);
+    }
+}
