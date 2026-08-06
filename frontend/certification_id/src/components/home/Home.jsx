@@ -43,6 +43,12 @@ function Home() {
               </button>
             </Link>
 
+            <Link to="https://drive.google.com/file/d/1A7RHc4N5e_J7lUyzPPxPR0b9LvMGoXhv/view?usp=sharing">
+              <button className="secondary-btn">
+                Demo Video
+              </button>
+            </Link>
+
           </div>
 
           {/* PROJECT FEATURES */}

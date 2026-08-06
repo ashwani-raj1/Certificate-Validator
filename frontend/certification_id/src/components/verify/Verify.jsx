@@ -74,7 +74,13 @@ function Verify() {
         >
           Verify Certificate
         </button>
-
+        <p className="sample-certificates">
+        Sample Certificate IDs:
+        <strong> CERT_INFY_10</strong>,
+        <strong> CERT_INFY_05</strong>,
+        <strong> CERT_97989</strong>,
+        <strong> CERT_99900</strong>
+        </p>
       </div>
 
       {/* Image Verification */}

@@ -573,3 +573,14 @@ input[type=file]::file-selector-button:hover{
     background:#ececec;
 
 }
+.sample-certificates {
+    margin-top: 25px;      /* Space above */
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.sample-certificates strong {
+    color: #4f46e5;
+    font-weight: 600;
+}
