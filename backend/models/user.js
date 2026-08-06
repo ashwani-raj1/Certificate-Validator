@@ -7,6 +7,8 @@ const studentData = new Schema({
     roll:{type: Number,required: true},
     certificateid:{type: String,required: true},
     date:{type: String,required: true},
+    blockchainHash: {type:String},
+    transactionHash: {type:String}
 })
 
 module.exports = mongoose.model("Student",studentData)

@@ -3,254 +3,191 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 
 function Home() {
+  return (
+    <div className="home-container">
 
-    return (
+      <section className="hero-section">
 
-        <div className="home-container">
+        {/* LEFT */}
 
-            {/* HERO SECTION */}
+        <div className="hero-left">
 
-            <section className="hero-section">
+          <div className="hero-tag">
+            🚀 Blockchain Powered Certificate Verification
+          </div>
 
-                {/* LEFT SIDE */}
+          <h1 className="hero-title">
+            Verify Certificates
+            <br />
+            <span>Using Blockchain Technology</span>
+          </h1>
 
-                <div className="hero-left">
+          <p className="hero-description">
+            A blockchain-based certificate verification system that enables
+            instant authentication using SHA-256 hashing, Ethereum Sepolia
+            blockchain, MongoDB, OCR image verification, and an admin dashboard
+            for secure certificate management.
+          </p>
 
-                    <div className="hero-tag">
-                        🚀 Smart Certificate Verification Platform
-                    </div>
+          <div className="hero-buttons">
 
-                    <h1 className="hero-title">
+            <Link to="/verify">
+              <button className="primary-btn">
+                Verify Certificate
+              </button>
+            </Link>
 
-                        Verify Certificates
-                        <br />
+            <Link to="/signin">
+              <button className="secondary-btn">
+                Admin Login
+              </button>
+            </Link>
 
-                        <span>
-                            Instantly & Securely
-                        </span>
+          </div>
 
-                    </h1>
+          {/* PROJECT FEATURES */}
 
-                    <p className="hero-description">
+          <div className="trust-section">
 
-                        Modern certificate verification platform with
-                        secure authentication, admin dashboard,
-                        bulk Excel uploads, and real-time verification.
+            <div className="trust-box">
+              🔐 Blockchain
+            </div>
 
-                    </p>
+            <div className="trust-box">
+              ⚡ SHA-256
+            </div>
 
-                    <div className="hero-buttons">
+            <div className="trust-box">
+              📄 OCR
+            </div>
 
-                        <Link to="/verify">
+            <div className="trust-box">
+              ☁ MongoDB
+            </div>
 
-                            <button className="primary-btn">
-
-                                Verify Now
-
-                            </button>
-
-                        </Link>
-
-                        <Link to="/about">
-
-                            <button className="secondary-btn">
-
-                                Learn More
-
-                            </button>
-
-                        </Link>
-
-                    </div>
-
-                    {/* TRUST SECTION */}
-
-                    <div className="trust-section">
-
-                        <div className="trust-box">
-                            🔒 Secure
-                        </div>
-
-                        <div className="trust-box">
-                            ⚡ Fast
-                        </div>
-
-                        <div className="trust-box">
-                            ✅ Trusted
-                        </div>
-
-                    </div>
-
-                </div>
-
-                {/* RIGHT SIDE */}
-
-                <div className="hero-right">
-
-                    <div className="hero-card">
-
-                        {/* TOP BAR */}
-
-                        <div className="card-top">
-
-                            <div className="window-circle window-red"></div>
-
-                            <div className="window-circle window-yellow"></div>
-
-                            <div className="window-circle window-green"></div>
-
-                        </div>
-
-                        {/* CONTENT */}
-
-                        <div className="card-content">
-
-                            <div className="verified-icon">
-                                ✅
-                            </div>
-
-                            <h2>
-                                Certificate Verified
-                            </h2>
-
-                            <p>
-                                Certificate ID:
-                                CERT2026-4589
-                            </p>
-
-                            <div className="verified-badge">
-                                Authentic Certificate
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                {/* BACKGROUND BLOBS */}
-
-                <div className="blob blue"></div>
-
-                <div className="blob red-blob"></div>
-
-                <div className="blob yellow-blob"></div>
-
-                <div className="blob green-blob"></div>
-
-            </section>
-
-            {/* STATS SECTION */}
-
-            <section className="stats-section">
-
-                <div className="stat-card">
-
-                    <h1>
-                        10K+
-                    </h1>
-
-                    <p>
-                        Certificates Verified
-                    </p>
-
-                </div>
-
-                <div className="stat-card">
-
-                    <h1>
-                        500+
-                    </h1>
-
-                    <p>
-                        Institutions Connected
-                    </p>
-
-                </div>
-
-                <div className="stat-card">
-
-                    <h1>
-                        99.9%
-                    </h1>
-
-                    <p>
-                        Verification Accuracy
-                    </p>
-
-                </div>
-
-            </section>
-
-            {/* FEATURES SECTION */}
-
-            <section className="features-section">
-
-                <h1 className="section-title">
-
-                    Why Choose Us?
-
-                </h1>
-
-                <div className="features-grid">
-
-                    <div className="feature-card">
-
-                        <div className="feature-icon">
-                            🔒
-                        </div>
-
-                        <h2>
-                            Secure Verification
-                        </h2>
-
-                        <p>
-                            JWT authentication and secure database
-                            validation for trusted verification.
-                        </p>
-
-                    </div>
-
-                    <div className="feature-card">
-
-                        <div className="feature-icon">
-                            ⚡
-                        </div>
-
-                        <h2>
-                            Fast Processing
-                        </h2>
-
-                        <p>
-                            Verify certificates instantly with
-                            high-speed backend integration.
-                        </p>
-
-                    </div>
-
-                    <div className="feature-card">
-
-                        <div className="feature-icon">
-                            📊
-                        </div>
-
-                        <h2>
-                            Admin Dashboard
-                        </h2>
-
-                        <p>
-                            Manage and upload certificate records
-                            easily using Excel sheets.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
+          </div>
 
         </div>
-    );
+
+        {/* RIGHT */}
+
+        <div className="hero-right">
+
+          <div className="hero-card">
+
+            <div className="card-top">
+
+              <div className="window-circle window-red"></div>
+
+              <div className="window-circle window-yellow"></div>
+
+              <div className="window-circle window-green"></div>
+
+            </div>
+
+            <div className="card-content">
+
+              <div className="verified-icon">
+                ✅
+              </div>
+
+              <h2>Certificate Verified</h2>
+
+              <p>
+                Certificate ID:
+                <br />
+                <strong>CERT_INFY_01</strong>
+              </p>
+
+              <p>
+                Status:
+                <br />
+                <strong>Verified on Blockchain</strong>
+              </p>
+
+              <div className="verified-badge">
+                Authentic Certificate
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* BACKGROUND */}
+
+        <div className="blob blue"></div>
+        <div className="blob red-blob"></div>
+        <div className="blob yellow-blob"></div>
+        <div className="blob green-blob"></div>
+
+      </section>
+
+      {/* FEATURES */}
+
+      <section className="features-section">
+
+        <h2 className="features-title">
+          Project Features
+        </h2>
+
+        <div className="features-grid">
+
+          <div className="feature-card">
+            <h3>🔐 Blockchain Security</h3>
+            <p>
+              Every certificate hash is securely stored on Ethereum Sepolia
+              blockchain to prevent forgery and tampering.
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <h3>📄 OCR Verification</h3>
+            <p>
+              Upload a certificate image and automatically extract the
+              certificate ID using OCR for instant verification.
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <h3>👨‍💻 Admin Dashboard</h3>
+            <p>
+              Add certificates manually or upload multiple certificates through
+              Excel files with secure authentication.
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <h3>⚡ Instant Verification</h3>
+            <p>
+              Certificate hashes are compared with blockchain records to verify
+              authenticity within seconds.
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <h3>🔍 Tamper Detection</h3>
+            <p>
+              Any modification in certificate data changes the SHA-256 hash,
+              allowing instant tamper detection.
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <h3>🌐 Blockchain Explorer</h3>
+            <p>
+              Open every verified transaction directly on Sepolia Etherscan to
+              view blockchain proof.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+  );
 }
 
 export default Home;

@@ -3,114 +3,126 @@ import "./Footer.css";
 import { Link } from "react-router-dom";
 
 function Footer() {
+  return (
+    <footer className="footer">
 
-    return (
+      <div className="footer-container">
 
-        <footer className="footer">
+        {/* Project Info */}
 
-            <div className="footer-container">
+        <div className="footer-section">
 
-                {/* Left Section */}
-                <div className="footer-section">
+          <h2 className="footer-logo">
+            Blockchain Certificate Verification
+          </h2>
 
-                    <h2 className="footer-logo">
-                        Certificate Validator
-                    </h2>
+          <p className="footer-text">
+            A blockchain-based certificate verification system built using
+            React, Node.js, Express, MongoDB Atlas, Ethereum Sepolia,
+            SHA-256 hashing and OCR to provide secure, tamper-proof
+            certificate authentication.
+          </p>
 
-                    <p className="footer-text">
-                        Secure and smart certificate verification platform
-                        with admin dashboard, JWT authentication, and
-                        Excel-based bulk uploads.
-                    </p>
+        </div>
 
-                </div>
+        {/* Quick Links */}
 
-                {/* Quick Links */}
-                <div className="footer-section">
+        <div className="footer-section">
 
-                    <h3 className="footer-heading">
-                        Quick Links
-                    </h3>
+          <h3 className="footer-heading">
+            Quick Links
+          </h3>
 
-                    <Link to="/" className="footer-link">
-                        Home
-                    </Link>
+          <Link
+            to="/"
+            className="footer-link"
+          >
+            Home
+          </Link>
 
-                    <Link to="/about" className="footer-link">
-                        About
-                    </Link>
+          <Link
+            to="/about"
+            className="footer-link"
+          >
+            About
+          </Link>
 
-                    <Link to="/verify" className="footer-link">
-                        Verify Certificate
-                    </Link>
+          <Link
+            to="/verify"
+            className="footer-link"
+          >
+            Verify Certificate
+          </Link>
 
-                    <Link to="/admin" className="footer-link">
-                        Admin
-                    </Link>
+          <Link
+            to="/signin"
+            className="footer-link"
+          >
+            Admin Login
+          </Link>
 
-                </div>
+        </div>
 
-                {/* Contact Section */}
-                <div className="footer-section">
+        {/* Contact */}
 
-                    <h3 className="footer-heading">
-                        Contact
-                    </h3>
+        <div className="footer-section">
 
-                    <p className="footer-text">
-                        Email: support@certificatevalidator.com
-                    </p>
+          <h3 className="footer-heading">
+            Contact
+          </h3>
 
-                    <p className="footer-text">
-                        Phone: +91 9876543210
-                    </p>
+          <p className="footer-text">
+            Ashwani Raj
+          </p>
 
-                    <div className="footer-socials">
+          <p className="footer-text">
+            Email: ashwaniraj084@gmail.com
+          </p>
 
-                        <a
-                            href="https://linkedin.com"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="social-link"
-                        >
-                            LinkedIn
-                        </a>
+          <p className="footer-text">
+            Phone: +91 9798018523
+          </p>
 
-                        <a
-                            href="https://github.com"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="social-link"
-                        >
-                            GitHub
-                        </a>
+          <div className="footer-socials">
 
-                        <a
-                            href="https://twitter.com"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="social-link"
-                        >
-                            Twitter
-                        </a>
+            {/* Replace with your actual profile URLs */}
 
-                    </div>
+            <a
+              href="https://github.com/ashwani-raj1"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+            >
+              GitHub
+            </a>
 
-                </div>
+            <a
+              href="https://www.linkedin.com/in/ashwani-raj-57480028a/"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+            >
+              LinkedIn
+            </a>
 
-            </div>
+          </div>
 
-            {/* Bottom */}
-            <div className="footer-bottom">
+        </div>
 
-                <p>
-                    © 2026 Certificate Validator. All Rights Reserved.
-                </p>
+      </div>
 
-            </div>
+      {/* Bottom */}
 
-        </footer>
-    );
+      <div className="footer-bottom">
+
+        <p>
+          © 2026 Ashwani Raj. All Rights Reserved.
+        </p>
+
+      </div>
+
+    </footer>
+  );
 }
 
 export default Footer;

@@ -59,44 +59,68 @@ export default function Admin() {
 
     /* MANUAL ENTRY */
 
-    const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        fetch("http://localhost:5000/add", {
+    try {
 
-            method: "POST",
+        const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/add`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            }
+        );
 
-            headers: {
-                "content-type": "application/json"
-            },
+        const data = await response.json();
 
-            body: JSON.stringify(formData)
+        // Request failed
+        if (!response.ok || !data.success) {
 
-        })
+            return alert(data.message || data.error);
 
-        .then(res => res.json())
+        }
 
-        .then(data => {
+        // Success
+        setFormData({
+            eventName: "",
+            studentName: "",
+            studentRoll: "",
+            credential: "",
+            date: ""
+        });
 
-            console.log(data);
+        const openBlockchain = window.confirm(
+`${data.message}
 
-            alert("Certificate Added Successfully");
+Transaction Hash:
+${data.transactionHash}
 
-            setFormData({
+Do you want to view it on Blockchain?`
+        );
 
-                eventName: "",
-                studentName: "",
-                studentRoll: "",
-                credential: "",
-                date: ""
-            });
+        if (openBlockchain) {
 
-        })
+            window.open(
+                `https://sepolia.etherscan.io/tx/${data.transactionHash}`,
+                "_blank"
+            );
 
-        .catch(err => console.log(err));
-    };
+        }
 
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Server Error");
+
+    }
+
+};
     /* EXCEL UPLOAD */
 
     const handleFileUpload = async () => {
@@ -110,7 +134,7 @@ export default function Admin() {
 
         uploadData.append("excelFile", file);
 
-        fetch("http://localhost:5000/upload", {
+        fetch(`${import.meta.env.VITE_API_URL}/upload`, {
 
             method: "POST",
 
@@ -121,12 +145,21 @@ export default function Admin() {
 
         .then(data => {
 
-            console.log(data);
+        console.log(data);
 
-            alert("Excel Uploaded Successfully");
+        if(data.message){
+
+            alert(data.message);
 
             setFile(null);
-        })
+
+        }else{
+
+            alert(data.error);
+
+        }
+
+     })
 
         .catch(err => console.log(err));
     };
