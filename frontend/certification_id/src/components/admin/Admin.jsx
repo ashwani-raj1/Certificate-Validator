@@ -63,6 +63,14 @@ const handleSubmit = async (e) => {
 
     e.preventDefault();
 
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Please login first");
+        navigate("/signin");
+        return;
+    }
+
     try {
 
         const response = await fetch(
@@ -70,7 +78,8 @@ const handleSubmit = async (e) => {
             {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    authorization: token
                 },
                 body: JSON.stringify(formData)
             }
@@ -130,13 +139,25 @@ Do you want to view it on Blockchain?`
             return alert("Please select Excel file");
         }
 
-        const uploadData = new FormData();
+    const uploadData = new FormData();
 
-        uploadData.append("excelFile", file);
+    uploadData.append("excelFile", file);
 
-        fetch(`${import.meta.env.VITE_API_URL}/upload`, {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Please login first");
+        navigate("/signin");
+        return;
+    }
+
+    fetch(`${import.meta.env.VITE_API_URL}/upload`, {
 
             method: "POST",
+
+            headers: {
+                authorization: token
+            },
 
             body: uploadData
         })
