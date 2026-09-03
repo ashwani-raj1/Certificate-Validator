@@ -412,12 +412,12 @@ app.post(
                 "eng",
             );
 
-            let text = result.data.text || "";
+            const text = result.data.text || "";
 
-            text = text.replace(/\s/g, "");
-            text = text.replace(/O/g, "0");
-
-            const regex = /CERT\d+/i;
+            // Accept both legacy numeric IDs (CERT10) and IDs that use
+            // separators, e.g. CERT_INFY_10. Keeping the word boundaries
+            // prevents the "CERT" in "Certificate" from being matched.
+            const regex = /\bCERT(?:[_-]+[A-Z0-9]+)+\b|\bCERT\d+\b/i;
             const match = text.match(regex);
 
             if (!match) {

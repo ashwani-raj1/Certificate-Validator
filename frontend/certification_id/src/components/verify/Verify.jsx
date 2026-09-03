@@ -6,6 +6,7 @@ function Verify() {
   const [user, setUser] = useState(null);
   const [img, setImg] = useState(null);
   const [imgResult, setImgResult] = useState(null);
+  const [isImageVerifying, setIsImageVerifying] = useState(false);
 
   const handleVerify = () => {
     setImgResult(null);
@@ -25,17 +26,28 @@ function Verify() {
 
     const formData = new FormData();
     formData.append("certificate", img);
+    setImgResult(null);
+    setIsImageVerifying(true);
 
-    const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/verify/verify-image`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/verify/verify-image`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
-    const data = await res.json();
-    setImgResult(data);
+      const data = await res.json();
+      setImgResult(data);
+    } catch (error) {
+      setImgResult({
+        valid: false,
+        message: "Unable to verify the image. Please try again.",
+      });
+    } finally {
+      setIsImageVerifying(false);
+    }
   };
 
   return (
@@ -101,16 +113,29 @@ function Verify() {
           type="file"
           accept="image/*"
           onChange={(e) => setImg(e.target.files[0])}
+          disabled={isImageVerifying}
         />
 
         <button
           className="verify-button"
           onClick={handleVerifyImg}
+          disabled={isImageVerifying}
         >
-          Upload & Verify
+          {isImageVerifying ? "Scanning Certificate..." : "Upload & Verify"}
         </button>
 
       </div>
+
+      {isImageVerifying && (
+        <div className="scan-status" role="status" aria-live="polite">
+          <div className="scanner-ring" aria-hidden="true">
+            <div className="scanner-line"></div>
+            <span>OCR</span>
+          </div>
+          <h2>Scanning certificate</h2>
+          <p>Reading the Certificate ID and checking the blockchain record...</p>
+        </div>
+      )}
 
       {/* OCR RESULT */}
 
