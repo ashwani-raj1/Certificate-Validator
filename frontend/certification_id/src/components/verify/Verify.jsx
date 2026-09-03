@@ -66,11 +66,13 @@ function Verify() {
           placeholder="Enter Certificate ID"
           value={certificateid}
           onChange={(e) => setCertificateid(e.target.value)}
+          data-testid="certificate-id-input"
         />
 
         <button
           className="verify-button"
           onClick={handleVerify}
+          data-testid="verify-certificate-button"
         >
           Verify Certificate
         </button>
@@ -210,11 +212,11 @@ function Verify() {
 
             <>
 
-              <h2 className="success">
+              <h2 className="success" data-testid="certificate-verified">
                 ✅ Certificate Verified
               </h2>
 
-              <div className="certificate-details">
+              <div className="certificate-details" data-testid="certificate-details">
 
                 <p>
                   <span>Name</span>

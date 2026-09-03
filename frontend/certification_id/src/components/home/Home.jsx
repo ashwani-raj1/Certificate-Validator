@@ -32,7 +32,7 @@ function Home() {
           <div className="hero-buttons">
 
             <Link to="/verify">
-              <button className="primary-btn">
+              <button className="primary-btn" data-testid="home-verify-certificate">
                 Verify Certificate
               </button>
             </Link>
