@@ -7,14 +7,23 @@ function Verify() {
   const [img, setImg] = useState(null);
   const [imgResult, setImgResult] = useState(null);
   const [isImageVerifying, setIsImageVerifying] = useState(false);
+  const [isManualVerifying, setIsManualVerifying] = useState(false);
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     setImgResult(null);
+    setIsManualVerifying(true);
 
-    fetch(`${import.meta.env.VITE_API_URL}/verify/${certificateid}`)
-      .then((res) => res.json())
-      .then((data) => setUser(data))
-      .catch((err) => console.log(err));
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/verify/${certificateid}`
+      );
+      const data = await res.json();
+      setUser(data);
+    } catch (error) {
+      setUser({ valid: false, message: "Unable to verify the certificate. Please try again." });
+    } finally {
+      setIsManualVerifying(false);
+    }
   };
 
   const handleVerifyImg = async () => {
@@ -84,9 +93,11 @@ function Verify() {
         <button
           className="verify-button"
           onClick={handleVerify}
+          disabled={isManualVerifying}
           data-testid="verify-certificate-button"
         >
-          Verify Certificate
+          {isManualVerifying && <span className="button-spinner" aria-hidden="true" />}
+          {isManualVerifying ? "Verifying..." : "Verify Certificate"}
         </button>
         <p className="sample-certificates">
         Sample Certificate IDs:
@@ -121,21 +132,11 @@ function Verify() {
           onClick={handleVerifyImg}
           disabled={isImageVerifying}
         >
-          {isImageVerifying ? "Scanning Certificate..." : "Upload & Verify"}
+          {isImageVerifying && <span className="button-spinner" aria-hidden="true" />}
+          {isImageVerifying ? "Scanning..." : "Upload & Verify"}
         </button>
 
       </div>
-
-      {isImageVerifying && (
-        <div className="scan-status" role="status" aria-live="polite">
-          <div className="scanner-ring" aria-hidden="true">
-            <div className="scanner-line"></div>
-            <span>OCR</span>
-          </div>
-          <h2>Scanning certificate</h2>
-          <p>Reading the Certificate ID and checking the blockchain record...</p>
-        </div>
-      )}
 
       {/* OCR RESULT */}
 
