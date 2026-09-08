@@ -8,12 +8,11 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-      <Navbar />
-      <AppRoutes />
-      <Footer />
-    </BrowserRouter>
+        <Navbar />
+        <AppRoutes />
+        <Footer />
+      </BrowserRouter>
     </div>
-    
   );
 }
 

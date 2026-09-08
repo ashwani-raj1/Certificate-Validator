@@ -1,103 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signin.css";
 
 function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
-        e.preventDefault();
+      const data = await res.json();
 
-        try {
+      console.log(data);
 
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/signin`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-            });
+      if (data.valid) {
+        localStorage.setItem("token", data.token);
 
-            const data = await res.json();
+        alert("Logged In Successfully");
 
-            console.log(data);
-
-            if (data.valid) {
-
-                localStorage.setItem("token", data.token);
-
-                alert("Logged In Successfully");
-
-                navigate("/admin");
-
-            } else {
-
-                alert("Invalid Credentials");
-
-            }
-
-        } catch (err) {
-
-            console.log(err);
-
-        }
+        navigate("/admin");
+      } else {
+        alert("Invalid Credentials");
+      }
+    } catch (err) {
+      console.log(err);
     }
+  };
 
-    return (
+  return (
+    <div className="signin-container">
+      {/* Background Circles */}
+      <div className="red-circle"></div>
+      <div className="yellow-circle"></div>
+      <div className="green-circle"></div>
 
-        <div className="signin-container">
+      <form className="signin-form" onSubmit={handleSubmit}>
+        <h1 className="signin-title">Admin Login</h1>
 
-            {/* Background Circles */}
-            <div className="red-circle"></div>
-            <div className="yellow-circle"></div>
-            <div className="green-circle"></div>
+        <p className="signin-subtitle">Certificate Validator Dashboard</p>
 
-            <form className="signin-form" onSubmit={handleSubmit}>
+        <input
+          className="signin-input"
+          type="email"
+          value={email}
+          placeholder="Enter Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-                <h1 className="signin-title">
-                    Admin Login
-                </h1>
+        <input
+          className="signin-input"
+          type="password"
+          value={password}
+          placeholder="Enter Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-                <p className="signin-subtitle">
-                    Certificate Validator Dashboard
-                </p>
+        <button className="signin-btn" type="submit">
+          Sign In
+        </button>
 
-                <input
-                    className="signin-input"
-                    type='email'
-                    value={email}
-                    placeholder='Enter Email'
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <input
-                    className="signin-input"
-                    type='password'
-                    value={password}
-                    placeholder='Enter Password'
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-
-                <button className="signin-btn" type='submit'>
-                    Sign In
-                </button>
-
-                <p className="signin-footer">
-                    Secure Admin Authentication System
-                </p>
-
-            </form>
-
-        </div>
-    )
+        <p className="signin-footer">Secure Admin Authentication System</p>
+      </form>
+    </div>
+  );
 }
 
 export default Signin;

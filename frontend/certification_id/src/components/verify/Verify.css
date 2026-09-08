@@ -620,3 +620,87 @@ input[type=file]::file-selector-button:hover{
     color: #4f46e5;
     font-weight: 600;
 }
+
+/* Desktop verification workspace: forms on the left, result on the right. */
+.verify-layout {
+    width: 100%;
+    max-width: 1440px;
+    display: grid;
+    grid-template-columns: minmax(440px, .95fr) minmax(420px, 1.05fr);
+    gap: 38px;
+    align-items: start;
+    position: relative;
+    z-index: 5;
+}
+
+.verify-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.verify-actions .verify-box,
+.verify-actions .upload-box {
+    max-width: none;
+    width: 100%;
+    margin-top: 0;
+}
+
+.verify-result-panel {
+    min-height: 100%;
+    position: sticky;
+    top: 28px;
+}
+
+.verify-result-panel .result-card {
+    max-width: none;
+    width: 100%;
+    margin-top: 0;
+    min-height: 420px;
+}
+
+.result-placeholder {
+    min-height: 420px;
+    padding: 55px 35px;
+    border: 2px dashed #c7d2fe;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .72);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .08);
+    text-align: center;
+    color: #6b7280;
+}
+
+.result-placeholder span {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    margin: 35px auto 22px;
+    border-radius: 50%;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.result-placeholder h2 {
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.result-placeholder p {
+    max-width: 330px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+@media (max-width: 980px) {
+    .verify-layout {
+        grid-template-columns: 1fr;
+        max-width: 720px;
+    }
+
+    .verify-result-panel {
+        position: static;
+    }
+}
