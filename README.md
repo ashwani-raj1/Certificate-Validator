@@ -1,4 +1,4 @@
-# Certificate Validator Using Blockchain
+# Certificate Validator
 A full-stack web application to issue and verify student certificates using MongoDB and Ethereum blockchain.
 
 ## Features
