@@ -25,8 +25,6 @@ function Signin() {
 
       const data = await res.json();
 
-      console.log(data);
-
       if (data.valid) {
         localStorage.setItem("token", data.token);
 
